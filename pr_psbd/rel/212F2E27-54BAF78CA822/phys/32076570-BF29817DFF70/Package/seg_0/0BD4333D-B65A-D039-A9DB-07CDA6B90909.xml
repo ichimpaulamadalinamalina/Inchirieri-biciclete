@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="VIZUALIZARE_PACK" directorySegmentName="seg_0" id="0BD4333D-B65A-D039-A9DB-07CDA6B90909">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:40 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE VIZUALIZARE_PACK
+IS
+  PROCEDURE VIZUALIZARE_INCHIRIERI_CLIENTI;
+  PROCEDURE VIZUALIZARE_INCHIRIERI;
+  PROCEDURE VIZUALIZARE_NR_INCHIRIERI_BICICLETE;
+END VIZUALIZARE_PACK;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="VIZUALIZARE_PACK" id="0BD4333D-B65A-D039-A9DB-07CDA6B90909">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:11:50 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>create or replace PACKAGE BODY VIZUALIZARE_PACK IS
+
+    PROCEDURE VIZUALIZARE_INCHIRIERI_CLIENTI IS
+
+        CURSOR c1 IS
+        SELECT DISTINCT
+            nume,
+            prenume,
+            marca       
+        FROM
+            clienti, biciclete
+            CROSS JOIN inchirieri
+        WHERE
+                clienti.id_client = inchirieri.id_client
+            AND biciclete.id_bicicleta = inchirieri.id_bicicleta;
+
+    BEGIN
+        FOR i IN c1 LOOP
+            dbms_output.put_line(&apos;Clientul &apos;
+                                 || i.nume
+                                 || &apos; &apos;
+                                 || i.prenume
+                                 || &apos; a inchiriat o bicicleta &apos;
+                                 || i.marca );
+        END LOOP;
+    EXCEPTION
+        WHEN no_data_found THEN
+            dbms_output.put_line(&apos;SELECT did not return any row&apos;);
+    END VIZUALIZARE_INCHIRIERI_CLIENTI;
+    
+    PROCEDURE VIZUALIZARE_INCHIRIERI IS
+        CURSOR c2 IS
+        SELECT
+            *
+        FROM
+            inchirieri;
+
+    BEGIN
+        FOR i IN c2 LOOP
+            dbms_output.put_line(&apos;Bicicleta cu id-ul  &apos;
+                                 || i.id_bicicleta
+                                 || &apos; este inchiriata de la &apos;
+                                 || i.data_inchiriere
+                                 || &apos; pana la &apos;
+                                 || i.data_returnare
+                                 || &apos; de clientul &apos;
+                                 || i.id_client);
+        END LOOP;
+    EXCEPTION
+        WHEN no_data_found THEN
+            dbms_output.put_line(&apos;SELECT did not return any row&apos;);
+    END VIZUALIZARE_INCHIRIERI;
+    PROCEDURE VIZUALIZARE_NR_INCHIRIERI_BICICLETE
+    IS
+    nr NUMBER:=0;
+     CURSOR c2 IS
+        SELECT
+            *
+        FROM
+            BICICLETE;
+    BEGIN
+      FOR i IN c2 LOOP
+      SELECT count(*) into nr from inchirieri where id_bicicleta=i.id_bicicleta;
+                dbms_output.put_line(&apos;Bicicleta cu id-ul &apos;
+                                 || i.id_bicicleta
+                                 || &apos; a fost inchiriata de &apos;
+                                 || nr
+                                 || &apos; ori &apos;);
+        END LOOP;
+    
+    
+    
+    END VIZUALIZARE_NR_INCHIRIERI_BICICLETE;
+    
+    
+END vizualizare_pack;</source>
+</body>
+</PackageOracle>

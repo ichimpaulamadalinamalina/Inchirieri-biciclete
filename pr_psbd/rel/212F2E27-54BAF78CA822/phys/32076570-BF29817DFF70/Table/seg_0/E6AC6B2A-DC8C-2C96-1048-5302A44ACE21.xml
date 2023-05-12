@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="Biciclete" directorySegmentName="seg_0" id="E6AC6B2A-DC8C-2C96-1048-5302A44ACE21">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id_bicicleta" id="0BC7F80E-852E-548A-792F-A88D8380229A">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="culoare" id="9CEA3EC6-D86B-C5AB-E9D5-FFE59D3A0AA5">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="marca" id="CF8EE1EB-5078-0F7C-1DBE-73EDAA96B44E">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="pret" id="D9BAD854-91EB-BB4E-E9C9-7567F99BC507">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Biciclete_PK" id="0D2CB2A7-2C77-FB7E-C666-28DCF7125997">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 04:09:24 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

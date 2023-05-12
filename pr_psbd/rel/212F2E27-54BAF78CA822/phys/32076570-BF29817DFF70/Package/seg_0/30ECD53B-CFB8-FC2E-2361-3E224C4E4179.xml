@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="CLIENTI_PACK" directorySegmentName="seg_0" id="30ECD53B-CFB8-FC2E-2361-3E224C4E4179">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:43:51 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE CLIENTI_PACK
+IS
+  PROCEDURE ADD_CLIENTI
+  (var_nume clienti.nume%TYPE, var_prenume clienti.prenume%TYPE, var_varsta detalii_clienti.varsta%TYPE,
+    var_telefon  detalii_clienti.telefon%TYPE,
+    var_adresa  detalii_clienti.adresa%TYPE,
+    var_email   detalii_clienti.email%TYPE);
+ PROCEDURE UPD_CLIENTI_ADRESA
+  (var_id clienti.id_client%TYPE, var_adresa detalii_clienti.adresa%TYPE);
+PROCEDURE UPD_CLIENTI_TELEFON
+  (var_id clienti.id_client%TYPE, var_telefon detalii_clienti.telefon%TYPE);
+ PROCEDURE DEL_CLIENTI
+  (var_id clienti.id_client%TYPE);
+END CLIENTI_PACK;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="CLIENTI_PACK" id="30ECD53B-CFB8-FC2E-2361-3E224C4E4179">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:53:56 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE BODY CLIENTI_PACK
+IS
+  PROCEDURE ADD_CLIENTI
+  (var_nume clienti.nume%TYPE, var_prenume clienti.prenume%TYPE, var_varsta detalii_clienti.varsta%TYPE,
+    var_telefon  detalii_clienti.telefon%TYPE,
+    var_adresa  detalii_clienti.adresa%TYPE,
+    var_email   detalii_clienti.email%TYPE) 
+     IS
+--    varsta_prea_mica EXCEPTION;
+--    PRAGMA exception_init( varsta_prea_mica, -20001 );
+
+  BEGIN
+--  IF var_varsta&lt;14 then 
+--    raise_application_error(-20001,&apos;Persoanele sub 14 ani nu pot inchiria biciclete&apos;);
+--  END IF;
+   INSERT INTO clienti VALUES ( null,var_nume, var_prenume);
+   INSERT INTO detalii_clienti VALUES ( clienti_id_client_seq.currval,var_varsta, var_telefon, var_adresa,var_email);
+    EXCEPTION
+      WHEN DUP_VAL_ON_INDEX THEN
+        dbms_output.put_line(&apos;Clientul este deja existent!&apos;);
+--        ROLLBACK;
+  END;
+    
+ PROCEDURE UPD_CLIENTI_ADRESA
+  (var_id clienti.id_client%TYPE, var_adresa detalii_clienti.adresa%TYPE)
+  IS
+  BEGIN
+   UPDATE detalii_clienti
+   SET adresa=var_adresa
+   WHERE id_client=var_id;
+  END;
+ PROCEDURE UPD_CLIENTI_TELEFON
+  (var_id clienti.id_client%TYPE, var_telefon detalii_clienti.telefon%TYPE)
+  IS
+  BEGIN
+   UPDATE detalii_clienti
+   SET telefon=var_telefon
+   WHERE id_client=var_id;
+  END;
+
+ PROCEDURE DEL_CLIENTI
+  (var_id clienti.id_client%TYPE)
+  IS
+  no_data EXCEPTION;
+  BEGIN
+    DELETE FROM clienti
+    WHERE id_client = var_id;
+    IF SQL%NOTFOUND THEN
+      RAISE no_data;
+    END IF;
+    EXCEPTION
+      WHEN no_data THEN
+        dbms_output.put_line(&apos;Id-ul clientului nu se afla in baza de date!&apos;);
+  END;
+END CLIENTI_PACK;</source>
+</body>
+</PackageOracle>

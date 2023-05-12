@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FunctionOracle class="oracle.dbtools.crest.model.design.storage.oracle.FunctionOracle" name="get_client" directorySegmentName="seg_0" id="A08DE4C3-61F6-8268-F04C-4AA91965A080">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-01 20:06:33 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>create or replace function get_client(v_id IN inchiriere.id_inchiriere%TYPE )
+return inchirieri.id_client%TYPE
+is 
+    v_client inchirieri.id_client%TYPE;
+begin
+    select id_client into v_client from inchirieri where id_inchiriere=v_id;
+    return v_client;
+end;</source>
+</FunctionOracle>

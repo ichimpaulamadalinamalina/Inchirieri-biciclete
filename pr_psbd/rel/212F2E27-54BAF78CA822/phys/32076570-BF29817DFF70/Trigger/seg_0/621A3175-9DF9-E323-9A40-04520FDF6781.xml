@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_delete_client" directorySegmentName="seg_0" id="621A3175-9DF9-E323-9A40-04520FDF6781">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:42:52 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<actions>DELETE</actions>
+<body><![CDATA[
+DECLARE
+    v_nr NUMBER := 0;
+BEGIN
+    SELECT count(*) into v_nr FROM inchirieri WHERE id_client = :old.id_client and data_returnare > sysdate;
+    
+    IF v_nr > 0 THEN
+        RAISE_APPLICATION_ERROR(-20200, 'Clientul nu poate fi sters, are inchirieri facute.');
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>A56DF1C1-A41B-CCCA-6F83-B717FA8B1202</table>
+</TriggerOraclev10g>

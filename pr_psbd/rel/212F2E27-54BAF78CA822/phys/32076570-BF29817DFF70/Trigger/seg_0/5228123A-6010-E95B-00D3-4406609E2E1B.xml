@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_delete_bicicleta" directorySegmentName="seg_0" id="5228123A-6010-E95B-00D3-4406609E2E1B">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:59:21 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<actions>DELETE</actions>
+<body><![CDATA[
+DECLARE
+    v_id biciclete.id_bicicleta%TYPE;
+    v_nr NUMBER := 0;
+BEGIN
+    SELECT count(*) into v_nr FROM inchirieri WHERE id_bicicleta = :old.id_bicicleta and data_inchiriere > sysdate;
+    
+    IF v_nr > 0 THEN
+        RAISE_APPLICATION_ERROR(-20200, 'Bicicleta nu poate fi stearsa. Exista inchirieri cu ea .');
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>E6AC6B2A-DC8C-2C96-1048-5302A44ACE21</table>
+</TriggerOraclev10g>

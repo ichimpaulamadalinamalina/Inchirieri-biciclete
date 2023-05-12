@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6AC6B2A-DC8C-2C96-1048-5302A44ACE21" name="Biciclete">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>0ACC80F0-45B6-A28D-189D-7F38B5FAE19E</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_bicicleta" id="0BC7F80E-852E-548A-792F-A88D8380229A">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>2DFD99E2-95DC-0CD7-2B7E-A3966BF121B2</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementMaxValue>999</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="marca" id="CF8EE1EB-5078-0F7C-1DBE-73EDAA96B44E">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>29E5A0D5-B226-C8DE-1BC5-1B46A81048D3</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="culoare" id="9CEA3EC6-D86B-C5AB-E9D5-FFE59D3A0AA5">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>3C0FDAE5-9A02-0912-6FD4-6EFC488712B5</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pret" id="D9BAD854-91EB-BB4E-E9C9-7567F99BC507">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>7F2FC2AC-F122-F637-FED7-122ECDA50D4E</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0D2CB2A7-2C77-FB7E-C666-28DCF7125997" name="Biciclete_PK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>E51A36C9-E5B8-4C7D-0650-28E62A62079A</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0BC7F80E-852E-548A-792F-A88D8380229A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

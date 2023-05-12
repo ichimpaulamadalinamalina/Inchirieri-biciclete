@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_insert_biciclete" directorySegmentName="seg_0" id="B7F77D1C-167E-360A-2519-64C92B3C97EB">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-02 10:43:53 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[
+DECLARE
+    ultima_data_retur DATE;
+    v_nr_de_inchirieri NUMBER(4);
+BEGIN  
+    SELECT COUNT(*) INTO v_nr_de_inchirieri FROM inchirieri WHERE id_bicicleta = :new.id_bicicleta;
+    IF v_nr_de_inchirieri > 0 
+    THEN
+        SELECT MAX(data_returnare) INTO ultima_data_retur FROM inchirieri WHERE id_bicicleta = :new.id_bicicleta;
+        IF (:new.data_inchiriere < ultima_data_retur)
+        THEN
+           RAISE_APPLICATION_ERROR( -20001,
+                    'Data invalida: ' );
+        END IF;
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>E6AC6B2A-DC8C-2C96-1048-5302A44ACE21</table>
+</TriggerOraclev10g>

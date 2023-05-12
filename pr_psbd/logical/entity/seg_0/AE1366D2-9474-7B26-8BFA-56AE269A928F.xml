@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AE1366D2-9474-7B26-8BFA-56AE269A928F" name="Inchirieri">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:06:28 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_inchiriere" id="68999758-7AD9-6765-0BB2-898357E1E8D2">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:23:00 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_inchiriere" id="139E4E0B-EFF0-FF5B-5856-C633AF812C09">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:24:08 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_bicicleta" id="868C04DB-93A0-F429-14ED-E9F7B462BE51">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:25:06 UTC</createdTime>
+<generatorID>140C34A2-D4F7-2F8B-BDF9-C744BA11CF31</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<referedAttribute>2DFD99E2-95DC-0CD7-2B7E-A3966BF121B2</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_client" id="024B7119-968C-F9AB-1BC1-54C69FE1D768">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 07:22:22 UTC</createdTime>
+<generatorID>415C39A2-319F-797D-6DE1-7D85ED7903F0</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<referedAttribute>3018FE8B-A37E-FA59-416F-7C6216F444AE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="data_returnare" id="649AF3FA-51B6-24A9-1622-9FC072BC8474">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 07:57:11 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pret_inchiriere" id="90909B6F-7F73-4ED3-8FD6-C8B4163313BA">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 08:01:51 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="FB2049F8-F06B-DF1F-77E8-864D90C0D0EF" name="Inchirieri PK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:23:21 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>68999758-7AD9-6765-0BB2-898357E1E8D2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

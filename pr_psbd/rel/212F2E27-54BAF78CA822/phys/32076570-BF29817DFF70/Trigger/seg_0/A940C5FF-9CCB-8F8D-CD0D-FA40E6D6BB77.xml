@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_program_inchirieri" directorySegmentName="seg_0" id="A940C5FF-9CCB-8F8D-CD0D-FA40E6D6BB77">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:05:41 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<actions>INSERT, UPDATE, DELETE</actions>
+<body><![CDATA[BEGIN
+  IF TO_DATE(TO_CHAR(SYSDATE, 'HH24:MI'), 'HH24:MI') 
+        NOT BETWEEN TO_DATE('09:00', 'HH24:MI')
+          AND TO_DATE('20:00', 'HH24:MI')
+  THEN
+    RAISE_APPLICATION_ERROR(-20500, 'Se pot efectua modificari asupra datelor doar in timpul orelor de program!');
+  END IF;
+  END;
+]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>E6AC6B2A-DC8C-2C96-1048-5302A44ACE21</table>
+</TriggerOraclev10g>

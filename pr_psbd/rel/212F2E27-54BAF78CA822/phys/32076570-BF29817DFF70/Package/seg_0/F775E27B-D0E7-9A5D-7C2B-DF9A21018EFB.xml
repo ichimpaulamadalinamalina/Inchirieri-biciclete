@@ -1,0 +1,203 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="INCHIRIERI_PACK" directorySegmentName="seg_0" id="F775E27B-D0E7-9A5D-7C2B-DF9A21018EFB">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:44:02 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE INCHIRIERI_PACK
+AS
+  PROCEDURE ADD_INCHIRIERE
+  (     v_data_inchiriere  IN inchirieri.data_inchiriere%TYPE,
+        v_data_returnare   IN inchirieri.data_returnare%TYPE,
+        v_id_bicicleta     IN inchirieri.id_bicicleta%TYPE,
+        v_id_client        IN clienti.id_client%TYPE);
+  PROCEDURE DEL_INCHIRIERI(var_id inchiriere.id_inchiriere%TYPE);
+  PROCEDURE UPD_INCHIRIERI_START(var_id inchiriere.id_inchiriere%TYPE,var_inchiriere inchirieri.data_returnare%TYPE);
+  PROCEDURE UPD_INCHIRIERI_RETUR(var_id inchiriere.id_inchiriere%TYPE,var_retur inchirieri.data_returnare%TYPE);
+END INCHIRIERI_PACK;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="INCHIRIERI_PACK" id="F775E27B-D0E7-9A5D-7C2B-DF9A21018EFB">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 15:52:18 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE BODY INCHIRIERI_PACK
+AS
+PROCEDURE ADD_INCHIRIERE (
+        v_data_inchiriere  IN inchirieri.data_inchiriere%TYPE,
+        v_data_returnare   IN inchirieri.data_returnare%TYPE,
+        v_id_bicicleta     IN inchirieri.id_bicicleta%TYPE,
+        v_id_client        IN clienti.id_client%TYPE
+    ) IS
+       
+        v_tarif          biciclete.pret%TYPE;
+        v_tarif_calculat inchirieri.pret_inchiriere%TYPE := 0;
+        data_invalida EXCEPTION;
+        data_egala EXCEPTION;
+        CURSOR c_tarif IS
+        SELECT
+            pret
+        FROM
+            biciclete
+        WHERE
+            id_bicicleta = v_id_bicicleta;
+
+    BEGIN
+        OPEN c_tarif;
+        LOOP
+            FETCH c_tarif INTO v_tarif;
+            EXIT WHEN c_tarif%notfound;
+            v_tarif_calculat := ( v_data_returnare - v_data_inchiriere ) * v_tarif;
+            BEGIN
+                IF v_data_returnare &lt; v_data_inchiriere THEN
+                    RAISE data_invalida;
+                ELSIF v_data_returnare = v_data_inchiriere THEN
+                    RAISE data_egala;
+                ELSE
+                    INSERT INTO inchirieri VALUES (
+                        NULL,
+                            v_data_inchiriere,
+                            v_data_returnare,
+                            v_id_bicicleta,
+                            v_id_client,
+                            v_tarif_calculat
+                    );
+
+                    
+
+                     IF SQL%rowcount = 0 THEN
+                            dbms_output.put_line(&apos;Bicicleta cu id-ul  &apos;
+                                                 || v_id_bicicleta
+                                                 || &apos; nu exista&apos;);
+                        END IF;
+                    END IF;
+
+            EXCEPTION
+                WHEN no_data_found THEN
+                    dbms_output.put_line(&apos;SELECT did not return any row&apos;);
+                WHEN data_invalida THEN
+                    dbms_output.put_line(&apos;data_retur trebuie sa fie mai mare decat data_inchiriere&apos;);
+                WHEN data_egala THEN
+                    dbms_output.put_line(&apos;Masina poate fi inchiriata minim o zi&apos;);
+                WHEN OTHERS THEN
+                    dbms_output.put_line(&apos;Something else went wrong - &apos;
+                                         || sqlcode
+                                         || &apos; : &apos;
+                                         || sqlerrm);
+            END;
+
+        END LOOP;
+
+        CLOSE c_tarif;
+    END add_inchiriere;
+    
+  PROCEDURE DEL_INCHIRIERI
+  (var_id inchiriere.id_inchiriere%TYPE)
+  IS
+  no_data EXCEPTION;
+  BEGIN
+    DELETE FROM inchirieri
+    WHERE id_inchiriere = var_id;
+    IF SQL%NOTFOUND THEN
+      RAISE no_data;
+    END IF;
+    EXCEPTION
+      WHEN no_data THEN
+        dbms_output.put_line(&apos;Id-ul inchirierii nu se afla in baza de date!&apos;);
+  END;
+  PROCEDURE UPD_INCHIRIERI_RETUR(var_id inchiriere.id_inchiriere%TYPE,var_retur inchirieri.data_returnare%TYPE)
+   IS       
+        bicicleta_inchiriata EXCEPTION;
+        interior EXCEPTION;
+        data_invalida EXCEPTION;
+        v_data_inchiriere      inchirieri.data_inchiriere%TYPE;
+        v_data_returnare      inchirieri.data_returnare%TYPE;
+        prima_data_inchiriere_dupa inchirieri.data_inchiriere%TYPE;
+        v_nr NUMBER:=0;
+        v_pret biciclete.pret%TYPE;
+      
+       BEGIN     
+       select (data_returnare) into v_data_returnare from inchirieri  where id_inchiriere=var_id; 
+       select (data_inchiriere) into v_data_inchiriere from inchirieri  where id_inchiriere=var_id; 
+       select pret into v_pret from biciclete where id_bicicleta=get_bicicleta(var_id);
+       select count(*) into v_nr from inchirieri where  data_returnare&gt;v_data_inchiriere and id_bicicleta=get_bicicleta(var_id); 
+       if(v_nr&lt;1) then 
+       UPDATE inchirieri
+       SET data_returnare=var_retur,  pret_inchiriere= (var_retur - data_inchiriere)* v_pret
+       WHERE id_inchiriere=var_id;
+       ELSE
+       select min(data_inchiriere) into prima_data_inchiriere_dupa from inchirieri  where data_inchiriere&gt;= v_data_returnare and id_bicicleta=get_bicicleta(var_id);                
+       IF (prima_data_inchiriere_dupa = var_retur) THEN 
+            RAISE bicicleta_inchiriata;
+       elsif (prima_data_inchiriere_dupa &lt; var_retur)
+        THEN 
+            RAISE bicicleta_inchiriata;
+        elsif (v_data_inchiriere &gt; var_retur)
+        THEN 
+            RAISE data_invalida;
+        else
+       UPDATE inchirieri
+       SET data_returnare=var_retur, pret_inchiriere= (var_retur - data_inchiriere)* v_pret
+       WHERE id_inchiriere=var_id;
+      END IF;
+      END IF;
+       EXCEPTION
+                WHEN no_data_found THEN
+                    dbms_output.put_line(&apos;SELECT did not return any row&apos;);
+                WHEN bicicleta_inchiriata THEN
+                    dbms_output.put_line(&apos;Bicicleta este deja inchiriata&apos;);
+                WHEN data_invalida THEN
+                    dbms_output.put_line(&apos;data_returnare trebuie sa fie mai mare decat data_inchiriere&apos;);
+                WHEN OTHERS THEN
+                    dbms_output.put_line(&apos;Something else went wrong - &apos;
+                                         || sqlcode
+                                         || &apos; : &apos;
+                                         || sqlerrm);
+            END;
+  PROCEDURE UPD_INCHIRIERI_INCEPUT(var_id inchiriere.id_inchiriere%TYPE,var_inchiriere inchirieri.data_inchiriere%TYPE)
+   IS       
+        bicicleta_inchiriata EXCEPTION;
+        data_invalida EXCEPTION;
+        v_data_inchiriere      inchirieri.data_inchiriere%TYPE;
+        v_data_returnare      inchirieri.data_returnare%TYPE;
+        ultima_data_returnare_inainte inchirieri.data_returnare%TYPE; 
+        v_nr NUMBER:=0;
+        v_pret biciclete.pret%TYPE;
+       BEGIN
+       select (data_returnare) into v_data_returnare from inchirieri  where id_inchiriere=var_id; 
+       select (data_inchiriere) into v_data_inchiriere from inchirieri  where id_inchiriere=var_id; 
+       select pret into v_pret from biciclete where id_bicicleta=get_bicicleta(var_id);
+       select count(*) into v_nr from inchirieri where  data_returnare&lt;=v_data_inchiriere and id_bicicleta=get_bicicleta(var_id);
+       if (v_nr&lt;1) then
+       UPDATE inchirieri
+       SET data_inchiriere=var_inchiriere,pret_inchiriere= (data_returnare - var_inchiriere)* v_pret
+       WHERE id_inchiriere=var_id;
+       ELSE
+       select max(data_returnare) into ultima_data_returnare_inainte from inchirieri  where data_returnare&lt; v_data_inchiriere and id_bicicleta=get_bicicleta(var_id); 
+         dbms_output.put_line(ultima_data_returnare_inainte);
+       IF (ultima_data_returnare_inainte = var_inchiriere) THEN 
+            RAISE bicicleta_inchiriata;
+        elsif (ultima_data_returnare_inainte &gt; var_inchiriere)
+        THEN 
+            RAISE bicicleta_inchiriata;
+        elsif (v_data_returnare &lt; var_inchiriere)
+        THEN 
+            RAISE data_invalida;
+        else
+       UPDATE inchirieri
+       SET data_inchiriere=var_inchiriere, pret_inchiriere= (data_returnare - var_inchiriere)* v_pret
+       WHERE id_inchiriere=var_id;
+      END IF;
+      END IF;
+       EXCEPTION
+                WHEN bicicleta_inchiriata THEN
+                    dbms_output.put_line(&apos;Bicicleta este deja inchiriata&apos;);
+                WHEN data_invalida THEN
+                    dbms_output.put_line(&apos;data_returnare trebuie sa fie mai mare decat data_inchiriere&apos;);
+                WHEN OTHERS THEN
+                    dbms_output.put_line(&apos;Something else went wrong - &apos;
+                                         || sqlcode
+                                         || &apos; : &apos;
+                                         || sqlerrm);
+            END;
+        
+END INCHIRIERI_PACK;</source>
+</body>
+</PackageOracle>

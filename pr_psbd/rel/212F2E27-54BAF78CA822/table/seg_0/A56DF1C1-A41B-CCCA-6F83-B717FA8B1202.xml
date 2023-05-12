@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A56DF1C1-A41B-CCCA-6F83-B717FA8B1202" name="Clienti">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>12BA1ECE-D92D-E53D-2775-A91F07244D94</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_client" id="F1A59A53-6D5A-F18E-F374-E970FAB89AC6">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>3018FE8B-A37E-FA59-416F-7C6216F444AE</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementStartWith>10000</autoIncrementStartWith>
+<autoIncrementMaxValue>99999</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nume" id="A59C048F-00E4-666F-5694-C52585785DF8">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>79D5428B-1E32-A289-E1F3-92FE5B81F168</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prenume" id="89E65937-665C-728C-A0C0-87719371E687">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>48A7DD58-8D15-AA7E-E281-4463339BADD7</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="335EE1E6-3650-2013-0DDF-BDFE436AAAC7" name="Clienti_PK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>129C306E-C16A-E25D-6D24-C0507701E7C6</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1A59A53-6D5A-F18E-F374-E970FAB89AC6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="pr_psbd" id="F9768674-C629-D116-75CC-65A357057CB0" version="3.5">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:01:19 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>F9768674-C629-D116-75CC-65A357057CB0</designId>
+</OSDM_Design>

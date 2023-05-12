@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_1" directorySegmentName="seg_0" id="6CACFC4E-56C0-FA02-6D3A-F6647A6775F9">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 11:02:36 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<sourcePk>129C306E-C16A-E25D-6D24-C0507701E7C6</sourcePk>
+<dominantRole>12BA1ECE-D92D-E53D-2775-A91F07244D94</dominantRole>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>12BA1ECE-D92D-E53D-2775-A91F07244D94</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>58E6D864-20F4-53AD-0361-64DBD5A7B5BD</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

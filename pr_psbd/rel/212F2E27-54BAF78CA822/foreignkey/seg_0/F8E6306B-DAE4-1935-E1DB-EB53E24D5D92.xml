@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F8E6306B-DAE4-1935-E1DB-EB53E24D5D92" containerWithKeyObject="DE7CD70C-035C-ACE3-8486-592A5DC426B7" localFKIndex="0D2E0DB4-A381-DD39-FB49-2C87A56E26CD" name="Inchirieri_Biciclete_FK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>140C34A2-D4F7-2F8B-BDF9-C744BA11CF31</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<referredTableLongName>Biciclete</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E6AC6B2A-DC8C-2C96-1048-5302A44ACE21</referredTableID>
+<keyObject>0D2CB2A7-2C77-FB7E-C666-28DCF7125997</keyObject>
+<referredKeyID>0D2CB2A7-2C77-FB7E-C666-28DCF7125997</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_bicicleta</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

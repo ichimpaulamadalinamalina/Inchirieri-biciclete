@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<StoredProcedureOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.StoredProcedureOraclev10g" name="update_pret" directorySegmentName="seg_0" id="AD06B36F-9AB0-E43E-9E71-0B15F44D057C">
+<createdBy>malin</createdBy>
+<createdTime>2022-06-01 17:36:48 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PROCEDURE update_pret
+    IS
+        CURSOR v_cursor IS SELECT * FROM inchirieri;
+         v_pret NUMBER := 0;
+    BEGIN
+          FOR v IN v_cursor LOOP
+          SELECT pret into v_pret FROM biciclete WHERE biciclete.id_bicicleta = v.id_bicicleta;
+          UPDATE inchirieri 
+          SET pret_inchiriere= (data_returnare - data_inchiriere) * v_pret
+          WHERE id_inchiriere=v.id_inchiriere;
+            
+        END LOOP;
+    END;</source>
+</StoredProcedureOraclev10g>

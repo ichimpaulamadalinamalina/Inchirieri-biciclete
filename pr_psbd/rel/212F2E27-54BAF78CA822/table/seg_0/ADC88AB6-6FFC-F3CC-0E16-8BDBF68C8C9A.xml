@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ADC88AB6-6FFC-F3CC-0E16-8BDBF68C8C9A" name="Detalii_clienti">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>58E6D864-20F4-53AD-0361-64DBD5A7B5BD</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_client" id="BCA0F94E-7456-239A-1B49-8F3431A5F3A7">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>7F8FCE38-9DBE-00AF-D0F7-27F69B437D31</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="133AEDA8-32B5-9D4A-9E5B-2D2D9A3C16AE" referredColumn="F1A59A53-6D5A-F18E-F374-E970FAB89AC6"/>
+</associations>
+</Column>
+<Column name="varsta" id="1307240C-C5C9-B580-1847-A50EF2C32497">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>FEF6EEFF-9438-9CF5-7085-1C695D442421</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefon" id="A383E708-0C87-EEE6-1B3D-79D86117C6D7">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>E7C426C5-3109-0A43-AD25-7123C9353DF6</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="length(telefon) = 10 AND REGEXP_LIKE ( telefon, &apos;^[07][0-9 ]*$&apos; )"/>
+</checkConstraint>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresa" id="21CE76F5-90BC-0D77-8ECF-9F9B2B0ACE6A">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>5309AC38-ACB4-D9CF-B338-6DB5679718CC</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="9CEF125A-F9EE-4BB5-A529-81A8A7113A05">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>36B5D392-2CD0-0F34-6170-50349146F9DB</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="regexp_like(email, &apos;[a-z0-9._%-]+@[a-z0-9._%-]+\.[a-z]{2,4}&apos;)"/>
+</checkConstraint>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A5EED561-7D0E-775B-BC43-F32B6D54DF6E" name="Detalii_clienti_PK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>D8117058-832E-87E2-FD99-18F667CBDA5F</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BCA0F94E-7456-239A-1B49-8F3431A5F3A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DBC9D65A-4355-9293-5CB7-50955BFE638F" name="Detalii_clienti_Clienti_FK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 07:50:50 UTC</createdTime>
+<generatorID>6CACFC4E-56C0-FA02-6D3A-F6647A6775F9</generatorID>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BCA0F94E-7456-239A-1B49-8F3431A5F3A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

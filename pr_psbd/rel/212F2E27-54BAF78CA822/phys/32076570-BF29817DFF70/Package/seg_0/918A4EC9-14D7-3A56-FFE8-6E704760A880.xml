@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="BICICLETE_PACK" directorySegmentName="seg_0" id="918A4EC9-14D7-3A56-FFE8-6E704760A880">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-19 15:30:59 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE BICICLETE_PACK AS 
+PROCEDURE ADD_BICICLETE
+  (var_marca biciclete.marca%TYPE, var_culoare biciclete.culoare%TYPE, var_pret biciclete.pret%TYPE);
+  PROCEDURE UPD_BICICLETE(var_id_bicicleta biciclete.id_bicicleta%TYPE,var_pret biciclete.pret%TYPE);
+  PROCEDURE DEL_BICICLETE(var_id_bicicleta biciclete.id_bicicleta%TYPE);
+END;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="BICICLETE_PACK" id="918A4EC9-14D7-3A56-FFE8-6E704760A880">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-29 08:08:08 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE BODY BICICLETE_PACK
+IS
+
+  PROCEDURE ADD_BICICLETE
+  ( var_marca biciclete.marca%TYPE, var_culoare biciclete.culoare%TYPE, var_pret biciclete.pret%TYPE)
+  IS
+  BEGIN
+    INSERT INTO biciclete VALUES ( null,var_marca, var_culoare ,var_pret );
+    EXCEPTION
+      WHEN DUP_VAL_ON_INDEX THEN
+        dbms_output.put_line(&apos;Bicicleta este deja existenta!&apos;);
+  END;
+  
+   PROCEDURE UPD_BICICLETE
+  (var_id_bicicleta biciclete.id_bicicleta%TYPE,var_pret biciclete.pret%TYPE)
+  IS
+  BEGIN
+  UPDATE biciclete
+  SET pret=var_pret
+  WHERE id_bicicleta=var_id_bicicleta;
+  END;
+  
+  PROCEDURE DEL_BICICLETE
+  (var_id_bicicleta biciclete.id_bicicleta%TYPE)
+  IS
+  no_data EXCEPTION;
+  BEGIN
+    DELETE FROM biciclete
+    WHERE id_bicicleta = var_id_bicicleta;
+    IF SQL%NOTFOUND THEN
+      RAISE no_data;
+    END IF;
+    EXCEPTION
+      WHEN no_data THEN
+        dbms_output.put_line(&apos;Id-ul bicicletei nu se afla in baza de date!&apos;);
+  END;
+  
+END BICICLETE_PACK;</source>
+</body>
+</PackageOracle>

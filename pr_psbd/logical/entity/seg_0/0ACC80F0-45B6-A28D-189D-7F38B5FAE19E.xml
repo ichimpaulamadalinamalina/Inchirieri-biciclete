@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0ACC80F0-45B6-A28D-189D-7F38B5FAE19E" name="Biciclete">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:06:12 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_bicicleta" id="2DFD99E2-95DC-0CD7-2B7E-A3966BF121B2">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:24:49 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="marca" id="29E5A0D5-B226-C8DE-1BC5-1B46A81048D3">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 07:33:41 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="culoare" id="3C0FDAE5-9A02-0912-6FD4-6EFC488712B5">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 08:00:25 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pret" id="7F2FC2AC-F122-F637-FED7-122ECDA50D4E">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-14 08:00:52 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E51A36C9-E5B8-4C7D-0650-28E62A62079A" name="Biciclete PK">
+<createdBy>malin</createdBy>
+<createdTime>2022-05-13 20:24:52 UTC</createdTime>
+<ownerDesignName>pr_psbd</ownerDesignName>
+<engineerTo>
+<item key="212F2E27-D823-4D28-876E-54BAF78CA822" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2DFD99E2-95DC-0CD7-2B7E-A3966BF121B2</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
