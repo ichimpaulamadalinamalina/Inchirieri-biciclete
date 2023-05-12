@@ -1,2 +1,2 @@
 # Inchirieri-biciclete
-Proiect pentru materia Proiectarea Bazeelor de Date
+Proiect pentru materia Proiectarea Bazelor de Date
